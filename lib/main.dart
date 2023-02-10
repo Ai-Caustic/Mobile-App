@@ -71,14 +71,19 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             child: TextField(
               obscureText: true,
               controller: passwordController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
+              decoration: InputDecoration(
+                focusColor: Colors.deepOrange,
+                border: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.deepOrange),
+                    borderRadius: BorderRadius.circular(5)),
                 labelText: 'Password',
               ),
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              print('Forgot password');
+            },
             child: const Text(
               'Forgot Password',
             ),
@@ -93,20 +98,25 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   print(passwordController.text);
                 },
               )),
-          Row(
-            children: <Widget>[
-              const Text('Does not have account?'),
-              TextButton(
-                child: const Text(
-                  'Sign In',
-                  style: TextStyle(fontSize: 20),
+          Card(
+            color: Colors.deepOrange,
+            elevation: 5,
+            shadowColor: Colors.lightGreenAccent,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Padding(
+                    padding: EdgeInsets.only(left: 8.0),
+                    child: Icon(Icons.info, size: 20, color: Colors.white)),
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text("Welcome to the Application",
+                      style: TextStyle(fontSize: 20, color: Colors.white)),
                 ),
-                onPressed: () {
-                  //Signup Screen
-                },
-              )
-            ],
-            mainAxisAlignment: MainAxisAlignment.center,
+              ],
+            ),
           ),
         ],
       ),
